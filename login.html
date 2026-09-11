@@ -1,55 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <title>Document</title>
 </head>
 
 <body>
-    <h1>Login form</h1>
-
-    <form id="loginform">
-       
+    <h2>login page</h2>
+    <form action="/login" method="post">
         <label>username:</label>
-        <input type="text" id="username" name="username" >
+        <input type="text" id="username" name="username" required>
         <br><br>
-        
         <label>password:</label>
-        <input type="password" id="password" name="password" >
-        <br><br> 
-
-        <button type="submit" value="register">login</button>
-        <button type="reset" value="reset">reset</button>
-   </form>
-
-     <p id="message"></p>
-
-    <script> 
-    
-        let params=new URLSearchParams(window.location.search)
-        let registeredusername=params.get("username")
-        let registeredpassword=params.get("password")
-
-        document.getElementById("loginform").addEventListener("submit",function(event){
-            event.preventDefault()
-
-            let username=document.getElementById("username").value
-            let password=document.getElementById("password").value
-
-            if(username === registeredusername && password === registeredpassword)
-             {
-                document.getElementById("message").innerHTML=username+" login successfully"
-             }
-
-            else
-            {
-                document.getElementById("message").innerHTML= " login failed or password incorrect"
-             }
-       
-            }
-           
-        )
-    </script>
-    
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <input type="submit" value="login">    
+    </form>
 </body>
 
 </html>
