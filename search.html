@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Employee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #302b63;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        /* Search box */
+        .search-box {
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: #302b63;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input:focus {
+            border-color: #8e44ad;
+            outline: none;
+        }
+
+        /* Search button */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #732d91;
+        }
+
+        /* Result */
+        .result {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #302b63;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1e8f7;
+        }
+
+        .no-result {
+            text-align: center;
+            color: #777;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Search Employee</h1>
+    <div class="search-box">
+        <form action="/search" method="post">
+            <label>Employee Name:</label>
+            <input type="text" name="search_name" placeholder="Enter employee name" value="{{ search_name }}" required>
+            <button type="submit">
+                Search
+            </button>
+        </form>
+    </div>
+    <!-- Search Result -->
+    {% if employees %}
+    <div class="result">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Phone</th>
+            </tr>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee[0] }}</td>
+                <td>{{ employee[1] }}</td>
+                <td>{{ employee[2] }}</td>
+                <td>{{ employee[3] }}</td>
+                <td>{{ employee[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% elif search_name %}
+    <p class="no-result">
+        No employee found with the name "{{ search_name }}"
+    </p>
+    {% endif %}
+</body>
+
+</html>

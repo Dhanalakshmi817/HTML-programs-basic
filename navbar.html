@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #302b63;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo */
+        .logo {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Navigation links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #a8edea;
+        }
+
+        /* Login button */
+        .login-btn {
+            border: 1px solid #08edea;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .login-btn:hover {
+            background-color: #08edea;
+            color: #302b63 !important;
+        }
+
+        /* Register button */
+        .register-btn {
+            background-color: #8e44ad;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .register-btn:hover {
+            background-color: #732d91;
+            color: white !important;
+        }
+
+        /* Content */
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: #302b63;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            color: #555;
+            font-size: 18px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Employee Management System
+        </div>
+
+        <ul class="nav-links">
+
+            <!-- Home -->
+            <li>
+                <a href="/home">Home</a>
+            </li>
+
+            <!-- Employees -->
+            <li>
+                <a href="/employees">Employees</a>
+            </li>
+
+            <!-- Add Employee -->
+            <li>
+                <a href="/addemployee">Add Employee</a>
+            </li>
+
+            <!-- Search -->
+            <li>
+                <a href="/search">Search</a>
+            </li>
+
+            <!-- Login -->
+            <li>
+                <a href="/login">Login</a>
+            </li>
+
+            <!-- Register -->
+            <li>
+                <a href="/register">Register</a>
+            </li>
+
+        </ul>
+
+    </nav>
+    <!--------------------HOME CONENT---------------------------->
+    <div class="content">
+
+        <h1>Welcome to Employee Management System</h1>
+
+        <p>Manage your employees easily</p>
+
+    </div>
+
+</body>
+
+</html>

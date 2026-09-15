@@ -2,21 +2,92 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #302b63;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        form {
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: #302b63;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #8e44ad;
+            outline: none;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background-color: #8e44ad;
+        }
+
+        input[type="reset"] {
+            background-color: #302b63;
+            margin-left: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #732d91;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #201c4a;
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Registration form</h2>
-    <form action="/register" method="post">
-        <label>Fullname:</label>
-        <input type="text" id="Fullname" name="Fullname" required>
+    <h2>Registration Form</h2>
+    <form id="registrationform" action="/register" method="post">
+        <label>Full name:</label>
+        <input type="text" id="fullname" name="fullname" required>
         <br><br>
-        <label>username:</label>
+        <label>User name:</label>
         <input type="text" id="username" name="username" required>
         <br><br>
-        <label>password:</label>
+        <label>Password:</label>
         <input type="password" id="password" name="password" required>
         <br><br>
         <input type="submit" value="register">
