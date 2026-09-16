@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #302b63;
+            margin-top: 40px;
+        }
+
+        form {
+            width: 400px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #302b63;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #302b63;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #8e44ad;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Edit Employee</h1>
+
+    <form action="/edit/{{ employee[0] }}" method="post">
+
+        <label>Full Name</label>
+        <input type="text" name="fullname" value="{{ employee[1] }}" required>
+
+        <label>Email</label>
+        <input type="email" name="email" value="{{ employee[2] }}" required>
+
+        <label>Department</label>
+        <select name="department" required>
+            <option value="IT" {% if employee[3]=="IT" %}selected{% endif %}>IT</option>
+            <option value="HR" {% if employee[3]=="HR" %}selected{% endif %}>HR</option>
+            <option value="Finance" {% if employee[3]=="Finance" %}selected{% endif %}>Finance</option>
+            <option value="Marketing" {% if employee[3]=="Marketing" %}selected{% endif %}>Marketing</option>
+        </select>
+
+        <label>Phone</label>
+        <input type="text" name="phone" value="{{ employee[4] }}" required>
+
+        <button type="submit">Update Employee</button>
+
+    </form>
+
+</body>
+
+</html>
