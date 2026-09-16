@@ -147,6 +147,60 @@ def employees():
      return render_template("employees.html", employees=employees)
 
 
+#Delete Employee
+@app.route("/delete/<int:id>")
+def delete_employee(id):
+
+    connection = sqlite3.connect("users.db")
+    cursor = connection.cursor()
+    
+    cursor.execute(
+            "DELETE FROM EMPLOYEES WHERE id = ?",
+            (id,)
+         )
+    connection.commit()
+    connection.close()
+
+    return redirect("/employees")
+
+
+#Edit Employee
+@app.route("/edit/<int:id>", methods=["GET","POST"])
+def edit_employee(id):
+
+    connection = sqlite3.connect("users.db")
+    cursor = connection.cursor()
+
+    if request.method == "POST":
+
+      fullname = request.form["fullname"]
+      email= request.form["email"]
+      department = request.form["department"]
+      phone = request.form["phone"]
+   
+      cursor.execute("""
+            UPDATE employees
+            SET fullname=?, email=? ,department=? ,phone=?
+            WHERE id=?
+         """,(fullname,email,department,phone,id))
+      connection.commit()
+      connection.close()
+
+      return redirect("/employees")
+
+    cursor.execute("""
+                  SELECT id,fullname,email,department,phone
+                  FROM employees
+                  WHERE id=?
+                 """,(id,))
+
+    employee=cursor.fetchone()
+
+    connection.close()
+      
+    return render_template("editemployee.html",employee=employee)
+    
+    
 # Add Employee
 @app.route("/addemployee", methods=["GET", "POST"])
 def addemployee():
