@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="title">Cursor(using DOM manipulation)</h1>
+    <p id="count">0</p>
+    <button Class="button">increment</button>
+    <button Class="button2">decrement</button>
+    <script>
+        count = document.getElementById("count")
+        button = document.getElementsByClassName("button")[0]
+        button2 = document.getElementsByClassName("button2")[0]
+        button.addEventListener("click",
+            function () {
+                count.textContent = Number(count.textContent) + 1
+            })
+        button2.addEventListener("click",
+            function () {
+                count.textContent = Number(count.textContent) - 1
+            })
+    </script>
+</body>
+
+</html>

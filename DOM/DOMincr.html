@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="title">DOM manipulation</h1>
+    <p id="count">0</p>
+    <button id="button">increment</button>
+    <script>
+        //1.getElementId
+        heading = document.getElementById('title')
+        heading.textContent = "Dom using js"
+        count = document.getElementById("count")
+        button = document.getElementById("button")
+        button.addEventListener("click",
+            function () {
+                count.textContent = Number(count.textContent) + 1
+
+            }
+        )
+    </script>
+</body>
+
+</html>
