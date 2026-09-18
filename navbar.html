@@ -17,7 +17,7 @@
 
         /* Navbar */
         .navbar {
-            background-color: #302b63;
+            background-color: #12063c;
             padding: 15px 30px;
             display: flex;
             align-items: center;
@@ -40,7 +40,7 @@
         }
 
         .nav-links a {
-            color: ffffff;
+            color: #ffffff;
             text-decoration: none;
             font-size: 16px;
             padding: 8px 12px;
@@ -54,13 +54,13 @@
 
         /* Login button */
         .login-btn {
-            border: 1px solid #08edea;
+            border: 1px solid #a8edea;
             padding: 8px 15px;
             border-radius: 5px;
         }
 
         .login-btn:hover {
-            background-color: #08edea;
+            background-color: #a8edea;
             color: #302b63 !important;
         }
 
@@ -88,17 +88,46 @@
         }
 
         .content p {
-            color: #555;
+            color: #732d91;
             font-size: 18px;
         }
+        
+        /* theme-buttons */
+
+        .theme-toggle {
+           display:flex;
+           gap:10px;
+        }
+
+         .theme-toggle {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* dark theme */
+
+        body.dark {
+            background-color: #222;
+            color: white;
+        }
+
+        body.dark.content h1 {
+            color: white;
+        }
+
+        body.light.content p{
+            color: white;
+        }
+
     </style>
 
 </head>
 
-<body>
+<body class="{{theme}}">
 
     <!-- ================= NAVBAR ================= -->
-
     <nav class="navbar">
 
         <div class="logo">
@@ -136,6 +165,15 @@
             <li>
                 <a href="/register">Register</a>
             </li>
+             
+            <!--theme-->
+
+            <li>
+                <div class="theme-toggle">
+                    <a href="#" onclick="lighttheme()">🌞Light</a>
+                    <a href="#" onclick="darktheme()">🌚Dark</a>
+                </div>
+            </li>
 
         </ul>
 
@@ -148,6 +186,19 @@
         <p>Manage your employees easily</p>
 
     </div>
+
+    <script>
+        function lighttheme() {
+            document.body.classList.remove("dark")
+            localStorage.setItem("theme", "light")
+        }
+
+        function darktheme() {
+            document.body.classList.add("dark")
+            localStorage.setItem("theme", "dark")
+        }
+
+    </script>
 
 </body>
 

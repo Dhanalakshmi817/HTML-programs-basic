@@ -102,6 +102,43 @@
             line-height: 1.6;
         }
 
+        /* Dark theme */
+         
+        body.dark {
+            background-color: #222;
+            color: white;
+        }
+
+        body.dark .hero h1 {
+            color: white;
+        }
+
+        body.dark .hero h1 span {
+            color: #c084d6;
+        }
+
+        body.dark .hero p {
+            color: white;
+        }
+
+        body.dark .about h2 {
+            color: white;
+        }
+
+        body.dark .about p {
+            color: white;
+        }
+
+        body.dark .view-btn {
+            color: white;
+            border-color: white;
+        }
+
+        body.dark .add-btn {
+            color: #c084d6;
+            border-color: #c084d6;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             .hero h1 {
@@ -112,13 +149,16 @@
                 font-size: 16px;
             }
         }
+    
     </style>
 </head>
 
 <body>
     <!-- Hero Section -->
     <section class="hero">
+
         <div class="hero-content">
+
             <h1>
                 Welcome to <span>Employee Management System</span>
             </h1>
@@ -145,6 +185,15 @@
             employee information.
         </p>
     </section>
+
+     <!--Theme-->
+
+    <script>
+        if(localStorage.getItem("theme")=="dark") {
+            document.body.classList.add("dark");
+        }
+    </script>
+
 </body>
 
 </html>

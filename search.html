@@ -104,6 +104,51 @@
             margin-top: 25px;
             font-size: 18px;
         }
+
+        /* dark theme */
+
+        body.dark {
+           background-color: #222;
+           color: white;
+        }
+
+        body.dark h1 {
+           color: white;
+        }
+
+        body.dark label {
+           color: white;
+        }
+
+        body.dark input,
+        body.dark select {
+           background-color: #444;
+           color: white;
+           border-color: #666;
+        }
+
+        body.dark input::placeholder {
+           color: #ccc;
+        }
+
+        body.dark table {
+            color: white;
+            border-color: #555;
+        }
+
+        body.dark td {
+            color: white;
+            border-color: #555;
+        }
+
+        border.dark tr:hover {
+            background-color: #444;
+        }
+
+        body.dark .no-result {
+           color: #ccc;
+        }
+
     </style>
 </head>
 
@@ -145,6 +190,12 @@
         No employee found with the name "{{ search_name }}"
     </p>
     {% endif %}
+
+    <script>
+        if(localStorage.getItem("theme")=="dark") {
+            document.body.classList.add("dark");
+        }
+    </script>
 </body>
 
 </html>
