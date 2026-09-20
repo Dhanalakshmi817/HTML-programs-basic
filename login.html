@@ -12,7 +12,31 @@
 
         h1 {
             color: #302b63;
-            margin-top: 50px;
+            margin-top: 30px;
+        }
+
+        /* Theme buttons */
+        .theme {
+            text-align: right;
+            margin: 15px 30px;
+        }
+
+        .theme button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .light {
+            background-color: white;
+            color: #302b63;
+        }
+
+        .dark {
+            background-color: #302b63;
+            color: white;
         }
 
         form {
@@ -63,10 +87,32 @@
         input[type="reset"]:hover {
             background-color: #201c4a;
         }
+
+        /* Dark theme */
+        body.dark-mode {
+            background-color: #222;
+        }
+
+        body.dark-mode h1 {
+            color: white;
+        }
+
+        body.dark-mode form {
+            background-color: #333;
+        }
+
+        body.dark-mode label {
+            color: white;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Theme buttons -->
+    <div class="theme">
+        <button class="light" onclick="lightTheme()">☀ Light</button>
+        <button class="dark" onclick="darkTheme()">🌙Dark</button>
+    </div>
     <h1>Login form</h1>
     <form id="loginform" action="/login" method="post">
         <label>Username:</label>
@@ -77,7 +123,27 @@
         <br><br>
         <input type="submit" value="Login">
         <input type="reset" value="Reset">
+        <br><br>
+        <a href="/register">New user?Register here</a>
     </form>
+    <script>
+        function lightTheme() {
+            document.body.classList.remove("dark-mode");
+            document.cookie = "theme=light; path=/";
+        }
+        function darkTheme() {
+            document.body.classList.add("dark-mode");
+            document.cookie = "theme=dark; path=/";
+        }
+        // Read theme from cookie
+        let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+        if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark-mode");
+            }
+        }
+    </script>
 </body>
 
 </html>

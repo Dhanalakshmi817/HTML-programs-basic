@@ -66,7 +66,7 @@
            color: white;
         }
 
-        body.dark from {
+        body.dark form {
           background-color: #333;
         }
 
@@ -115,9 +115,15 @@
     </form>
 
      <script>
-        if(localStorage.getItem("theme")=="dark") {
-            document.body.classList.add("dark");
+        
+        let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
         }
+
     </script>
 
 </body>

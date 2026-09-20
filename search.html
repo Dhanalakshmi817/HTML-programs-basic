@@ -116,6 +116,10 @@
            color: white;
         }
 
+        body.dark .search-box {
+            background-color: #333;
+        }
+
         body.dark label {
            color: white;
         }
@@ -132,8 +136,7 @@
         }
 
         body.dark table {
-            color: white;
-            border-color: #555;
+            border-color: #333;
         }
 
         body.dark td {
@@ -141,7 +144,7 @@
             border-color: #555;
         }
 
-        border.dark tr:hover {
+        body.dark tr:hover {
             background-color: #444;
         }
 
@@ -192,9 +195,15 @@
     {% endif %}
 
     <script>
-        if(localStorage.getItem("theme")=="dark") {
-            document.body.classList.add("dark");
+        
+         let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
         }
+
     </script>
 </body>
 

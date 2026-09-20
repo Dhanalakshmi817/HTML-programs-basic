@@ -15,6 +15,7 @@
         body {
             font-family: Arial, sans-serif;
             color: #302b63;
+            background-color: #f4f7fc;
         }
 
         /* Hero Section */
@@ -189,9 +190,15 @@
      <!--Theme-->
 
     <script>
-        if(localStorage.getItem("theme")=="dark") {
-            document.body.classList.add("dark");
+        
+         let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
         }
+
     </script>
 
 </body>

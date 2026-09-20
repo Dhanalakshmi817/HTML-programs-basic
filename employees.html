@@ -38,6 +38,23 @@
             background-color: #a8edea;
         }
 
+        .edit-btn {
+            color: #302b63;
+            text-decoration: none;
+            font-weight: bold;
+        }
+          
+        .delete-btn {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+     
+        .edit-btn:hover,
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+        
         /* Dark theme */
 
         body.dark {
@@ -106,9 +123,15 @@
     </table>
 
     <script>
-        if(localStorage.getItem("theme")=="dark") {
-            document.body.classList.add("dark");
+       
+        let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
         }
+
     </script>
 
 </body>

@@ -52,31 +52,21 @@
             color: #a8edea;
         }
 
-        /* Login button */
-        .login-btn {
+        /* Logout button */
+
+        .logout-btn {
             border: 1px solid #a8edea;
             padding: 8px 15px;
             border-radius: 5px;
         }
 
-        .login-btn:hover {
+        .logout-btn:hover {
             background-color: #a8edea;
             color: #302b63 !important;
         }
 
-        /* Register button */
-        .register-btn {
-            background-color: #8e44ad;
-            padding: 8px 15px;
-            border-radius: 5px;
-        }
+         /* Content */
 
-        .register-btn:hover {
-            background-color: #732d91;
-            color: white !important;
-        }
-
-        /* Content */
         .content {
             padding: 50px;
             text-align: center;
@@ -92,6 +82,17 @@
             font-size: 18px;
         }
         
+        .username {
+            color: #8e44ad;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .success {
+            color: #302b63;
+            font-size: 20px;
+        }
         /* theme-buttons */
 
         .theme-toggle {
@@ -113,12 +114,20 @@
             color: white;
         }
 
-        body.dark.content h1 {
+        body.dark .content h1 {
             color: white;
         }
 
-        body.light.content p{
+        body.light .content p{
             color: white;
+        }
+
+        body.dark .success {
+            color: white;
+        }
+
+        body.dark .username {
+                color: #c084d6;
         }
 
     </style>
@@ -158,20 +167,15 @@
 
             <!-- Login -->
             <li>
-                <a href="/login">Login</a>
-            </li>
-
-            <!-- Register -->
-            <li>
-                <a href="/register">Register</a>
+                <a href="/logout" class="logout-btn">Logout</a>
             </li>
              
             <!--theme-->
 
             <li>
                 <div class="theme-toggle">
-                    <a href="#" onclick="lighttheme()">🌞Light</a>
-                    <a href="#" onclick="darktheme()">🌚Dark</a>
+                    <a href="#" onclick="lightTheme()">☀Light</a>
+                    <a href="#" onclick="darkTheme()">🌙Dark</a>
                 </div>
             </li>
 
@@ -181,21 +185,76 @@
     <!--------------------HOME CONENT---------------------------->
     <div class="content">
 
-        <h1>Welcome to Employee Management System</h1>
+        <div class="username">
+            Welcome, {{ username }}!
+        </div>
 
-        <p>Manage your employees easily</p>
+        <p class="success">
+            You are successfully logged in.
+        </p>
 
     </div>
 
     <script>
-        function lighttheme() {
-            document.body.classList.remove("dark")
-            localStorage.setItem("theme", "light")
+
+        function lightTheme() {
+
+            document.body.classList.remove("dark");
+
+            // Save theme in cookie
+            document.cookie = "theme=light; path=/";
+
+            // Save theme in database
+            fetch("/save-theme", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    theme: "light"
+                })
+            });
         }
 
-        function darktheme() {
-            document.body.classList.add("dark")
-            localStorage.setItem("theme", "dark")
+
+        function darkTheme() {
+
+            document.body.classList.add("dark");
+
+            // Save theme in cookie
+            document.cookie = "theme=dark; path=/";
+
+            // Save theme in database
+            fetch("/save-theme", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    theme: "dark"
+                })
+            });
+        }
+
+
+        // Get saved theme from database
+        let savedTheme = "{{ theme }}";
+
+        if (savedTheme == "dark") {
+            document.body.classList.add("dark");
+        }
+
+
+        // Get theme from cookie
+        let cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+
+            let parts = cookie.trim().split("=");
+
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
         }
 
     </script>

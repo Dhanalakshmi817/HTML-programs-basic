@@ -73,38 +73,37 @@
         /* dark theme */
 
         body.dark {
-           background-color: #222;
-           color: white;
+            background-color: #222;
+            color: white;
         }
 
         body.dark h1 {
-           color: white;
+            color: white;
         }
 
         body.dark from {
-          background-color: #333;
-          box-shadow: 0 3px 10px rgba(0, 0, 0, 0);
+            background-color: #333;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0);
         }
 
         body.dark label {
-           color: white;
+            color: white;
         }
 
         body.dark input,
         body.dark select {
-           background-color: #444;
-           color: white;
-           border-color: #666;
+            background-color: #444;
+            color: white;
+            border-color: #666;
         }
 
         body.dark input::placeholder {
-           color: #ccc;
+            color: #ccc;
         }
 
         body.dark button {
-           background-color: #8e44ad;
+            background-color: #8e44ad;
         }
-
     </style>
 </head>
 
@@ -129,9 +128,15 @@
     </form>
 
     <script>
-        if(localStorage.getItem("theme")=="dark") {
-            document.body.classList.add("dark");
+
+        let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
         }
+
     </script>
 </body>
 
