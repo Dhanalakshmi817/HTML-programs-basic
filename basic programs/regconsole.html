@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background-color: antiquewhite;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        h2 {
+            color: darkslategray;
+            text-align: center;
+        }
+
+        form {
+            background-color: cornsilk;
+            width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        label {
+            color: black;
+        }
+
+        input,select,textarea {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: cadetblue;
+            color: aqua;
+            padding: 8px 20px;
+        }
+
+        input[type="reset"] {
+            background-color: cadetblue;
+            color: aqua;
+            padding: 8px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Registration form</h2>
+    <form>
+        <label>Full name:</label>
+        <input type="text" id="Full name" name="Fullname" required>
+        <br><br>
+        <label>user name:</label>
+        <input type="text" name="user name" required>
+        <br><br>
+        <label>email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label>password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <label>confirm password:</label>
+        <input type="password" name="confirm password" required>
+        <br><br>
+        <label>phone number:</label>
+        <input type="tel" name="phone number" required>
+        <br><br>
+        <label>Date of birth </label>
+        <input type="date" name="Date of birth" required>
+        <br><br>
+        <label>Gender:</label>
+        <input type="radio" name="Gender" value=male required>male
+        <input type="radio" name="Gender" value=female required>female
+        <br><br>
+        <label>Address:</label>
+        <textarea name="Address" rows="4" cols="30" required></textarea>
+        <br><br>
+        <label>city:</label>
+        <input type="text" name="city" required>
+        <br><br>
+        <label>State:</label>
+        <select>
+            <option value="">---select option---</option>
+            <option>Andhra pradesh</option>
+            <option>telengana</option>
+            <option>maharastra</option>
+        </select>
+        <br><br>
+        <label>country:</label>
+        <select>
+            <option value="">---select option---</option>
+            <option>India</option>
+            <option>china</option>
+            <option>USA</option>
+        </select>
+        <br><br>
+        <label>pincode:</label>
+        <input type="number" name="pincode" required>
+        <br><br>
+        <label>upload profile picture</label>
+        <input type="file" name="upload profile picture">
+        <br><br>
+        <label>Hobbies:</label>
+        <input type="checkbox" name="Hobbies" value="learning new things">learning new things
+        <input type="checkbox" name="Hobbies" value="browsing internet">browsing internet
+        <input type="checkbox" name="Hobbies" value="thinking">creative thinking
+        <br><br>
+        <label>t&c:</label>
+        <input type="checkbox" name="terms and conditions" required>i agree all the terms and conditions applied by
+        company
+        <br><br>
+        <input type="submit" value="submit">
+        <input type="Reset" value="Reset">
+        <script>
+            document.querySelector("form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                let Fullname = document.getElementById("Full name").value;
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+                console.log("Full name:", Fullname);
+                console.log("email:", email);
+                console.log("password:", password);
+            });
+        </script>
+    </form>
+
+</body>
+
+</html>

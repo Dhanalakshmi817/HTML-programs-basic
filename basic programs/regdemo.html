@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: antiquewhite;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        h2 {
+            color: darkslategray;
+            text-align: center;
+        }
+
+        form {
+            background-color: cornsilk;
+            width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        label {
+            color: black;
+        }
+
+        input,select,textarea {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: cadetblue;
+            color: aqua;
+            padding: 8px 20px;
+        }
+
+        input[type="reset"] {
+              background-color: cadetblue;
+            color: aqua;
+            padding: 8px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registration form</h2>
+    <form action="/register" method="get">
+        <label>Full name:</label>
+        <input type="text" id="Full name" name="Fullname" required>
+        <br><br>
+        <label>user name:</label>
+        <input type="text" name="user name" required>
+        <br><br>
+        <label>email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label>password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <input type="submit" value="register">
+        <input type="Reset" value="Reset">
+        <script>
+            document.querySelector("form").addEventListener("submit", function (event){
+                let Fullname = document.getElementById("Full name").value;
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+                console.log("Full name:", Fullname);
+                console.log("email:", email);
+                console.log("password:", password);
+            });
+        </script>
+    </form>
+
+</body>
+
+</html>
+</body>
+</html>
