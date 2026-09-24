@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Employee Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        .dashboard {
+            padding: 45px;
+            text-align: center;
+        }
+
+        .dashboard h1 {
+            color: #172033;
+            margin-bottom: 35px;
+            font-size: 30px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 220px;
+            padding: 28px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+        }
+
+        .card h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #cbd5e1;
+        }
+
+        /* Blue card */
+
+        .total {
+            background-color: #172554;
+        }
+
+        .total h2 {
+            color: #60a5fa;
+        }
+
+        /* Green card */
+
+        .active {
+            background-color: #14532d;
+        }
+
+        .active h2 {
+            color: #4ade80;
+        }
+
+        /* Orange card */
+
+        .department {
+            background-color: #431407;
+        }
+
+        .department h2 {
+            color: #fb923c;
+        }
+
+        /* Purple card */
+
+        .new {
+            background-color: #3b0764;
+        }
+
+        .new h2 {
+            color: #c084fc;
+        }
+
+        /* Hover effect */
+
+        .card:hover {
+            transform: translateY(-4px);
+            transition: 0.3s;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="dashboard">
+
+        <h1>Employee Dashboard</h1>
+
+        <div class="cards">
+
+            <div class="card total">
+                <h2>10</h2>
+                <p>Total Employees</p>
+            </div>
+
+            <div class="card active">
+                <h2>8</h2>
+                <p>Active Employees</p>
+            </div>
+
+            <div class="card department">
+                <h2>4</h2>
+                <p>Departments</p>
+            </div>
+
+            <div class="card new">
+                <h2>2</h2>
+                <p>New Employees</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
