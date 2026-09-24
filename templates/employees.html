@@ -1,0 +1,185 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f5f9;
+        color: #334155;
+    }
+
+    h1 {
+        text-align: center;
+        color: #172033;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 85%;
+        margin: 40px auto;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.12);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: #172033;
+        color: white;
+        padding: 14px;
+    }
+
+    td {
+        padding: 14px;
+        text-align: center;
+        border-bottom: 1px solid #e2e8f0;
+        color: #334155;
+    }
+
+    tr:hover {
+        background-color: #f8fafc;
+    }
+
+    .edit-btn {
+        color: #1d4ed8;
+        text-decoration: none;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+
+    .delete-btn {
+        color: #dc2626;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .edit-btn:hover,
+    .delete-btn:hover {
+        text-decoration: underline;
+    }
+
+    .view-btn {
+        color: #16a34a;
+        text-decoration: none;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+
+    .view-btn:hover {
+        text-decoration: underline;
+    }
+
+    /* Dark theme */
+
+    body.dark {
+        background-color: #f1f5f9;
+        color: #334155;
+    }
+
+    body.dark h1 {
+        color: #172033;
+    }
+
+    body.dark table {
+        background-color: #ffffff;
+    }
+
+    body.dark td {
+        color: #334155;
+        border-color: #e2e8f0;
+    }
+
+    body.dark .edit-btn {
+        color: #1d4ed8;
+    }
+
+    body.dark .delete-btn {
+        color: #dc2626;
+    }
+
+    body.dark .view-btn {
+        color: #4ade80;
+    }
+
+    body.dark tr:hover {
+        background-color: #f8fafc;
+    }
+
+    /* Dark Theme */
+
+    body.dark {
+        background-color: #0f172a;
+        color: #e2e8f0;
+    }
+
+    body.dark h1 {
+        color: #f8fafc;
+    }
+
+    body.dark table {
+        background-color: #1e293b;
+    }
+
+    body.dark th {
+        background-color: #020617;
+        color: #ffffff;
+    }
+
+    body.dark td {
+        color: #e2e8f0;
+        border-color: #334155;
+    }
+
+    body.dark tr:hover {
+        background-color: #334155;
+    }
+</style>
+
+</head>
+
+<body class="{{ theme }}">
+    <h1>Employee Details</h1>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ employee[0] }}</td>
+            <td>{{ employee[1] }}</td>
+            <td>{{ employee[2] }}</td>
+            <td>{{ employee[3] }}</td>
+            <td>{{ employee[4] }}</td>
+            <td>
+                <a href="/view/{{ employee[0] }}" class="view-btn">View</a>
+                <a href="/edit/{{ employee[0] }}" class="edit-btn">Edit</a>
+                <a href="/delete/{{ employee[0] }}" class="delete-btn"
+                    onclick="return confirm('Are you want to delete this employee?')">
+                    Delete
+                </a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <script>
+
+        let cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            let parts = cookie.trim().split("=");
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
+        }
+
+    </script>
+
+</body>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Employee Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        .dashboard {
+            padding: 45px;
+            text-align: center;
+        }
+
+        .dashboard h1 {
+            color: #172033;
+            margin-bottom: 35px;
+            font-size: 30px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 220px;
+            padding: 28px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+        }
+
+        .card h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #cbd5e1;
+        }
+
+        /* Blue card */
+
+        .total {
+            background-color: #172554;
+        }
+
+        .total h2 {
+            color: #60a5fa;
+        }
+
+        /* Green card */
+
+        .active {
+            background-color: #14532d;
+        }
+
+        .active h2 {
+            color: #4ade80;
+        }
+
+        /* Orange card */
+
+        .department {
+            background-color: #431407;
+        }
+
+        .department h2 {
+            color: #fb923c;
+        }
+
+        /* Purple card */
+
+        .new {
+            background-color: #3b0764;
+        }
+
+        .new h2 {
+            color: #c084fc;
+        }
+
+        /* Hover effect */
+
+        .card:hover {
+            transform: translateY(-4px);
+            transition: 0.3s;
+        }
+
+        .department-summary {
+            width: 700px;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .department-summary h2 {
+            color: #172033;
+            margin-bottom: 15px;
+        }
+
+        .department-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .department-row span:first-child {
+            color: #334155;
+            font-weight: bold;
+        }
+
+        .department-row span:last-child {
+            color: #1d4ed8;
+            font-weight: bold;
+        }
+
+        /* Dark Theme */
+
+        body.dark .department-summary {
+            background-color: #1e293b;
+        }
+
+        body.dark .department-summary h2 {
+            color: white;
+        }
+
+        body.dark .department-row {
+            border-color: #475569;
+        }
+
+        body.dark .department-row span:first-child {
+            color: #e2e8f0;
+        }
+
+        body.dark .department-row span:last-child {
+            color: #60a5fa;
+        }
+
+        /* Dark Theme */
+
+        body.dark .department-summary {
+            background-color: #1e293b;
+        }
+
+        body.dark .department-summary h2 {
+            color: white;
+        }
+
+        body.dark .department-row {
+            border-color: #475569;
+        }
+
+        body.dark .department-row span:first-child {
+            color: #e2e8f0;
+        }
+
+        body.dark .department-row span:last-child {
+            color: #60a5fa;
+        }
+
+        /* Dark Theme */
+
+        body.dark {
+            background-color: #0f172a;
+        }
+
+        body.dark .dashboard h1 {
+            color: #f8fafc;
+        }
+
+        body.dark .card {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+
+<body class="{{ theme }}">
+
+    <div class="dashboard">
+
+        <h1>Employee Dashboard</h1>
+
+        <div class="cards">
+
+            <!-- Total Employees -->
+
+            <div class="card total">
+                <h2>{{ total_employees }}</h2>
+                <p>Total Employees</p>
+            </div>
+
+            <!-- Active Employees -->
+
+            <div class="card active">
+                <h2>{{ total_employees }}</h2>
+                <p>Active Employees</p>
+            </div>
+
+
+            <!-- Departments -->
+
+            <div class="card department">
+                <h2>{{ departments }}</h2>
+                <p>Departments</p>
+            </div>
+
+
+            <!-- Registered Users -->
+
+            <div class="card new">
+                <h2>{{ total_users }}</h2>
+                <p>Registered Users</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="department-summary">
+
+        <h2>Department Summary</h2>
+
+        {% for department in department_data %}
+
+        <div class="department-row">
+            <span>{{ department[0] }}</span>
+            <span>{{ department[1] }} Employees</span>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

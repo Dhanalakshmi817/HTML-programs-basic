@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Employee Management System - Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: 0.3s;
+        }
+
+        /* Theme Buttons */
+
+        .theme {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+        }
+
+        .theme button {
+            padding: 9px 14px;
+            margin-left: 5px;
+
+            border-radius: 7px;
+            cursor: pointer;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .light {
+            background-color: white;
+            color: #d97706;
+            border: 1px solid #d97706;
+        }
+
+        .dark {
+            background-color: #172033;
+            color: white;
+            border: 1px solid #172033;
+        }
+
+        .theme button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Login Box */
+
+        .login-box {
+            width: 410px;
+
+            background-color: white;
+
+            padding: 42px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 15px 35px rgba(15, 23, 42, 0.18);
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        /* Logo */
+
+        .logo {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #dbeafe;
+
+            border-radius: 50%;
+
+            font-size: 34px;
+
+            box-shadow: 0 5px 15px rgba(29, 78, 216, 0.15);
+        }
+
+        /* Heading */
+
+        h1 {
+            color: #172033;
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+        }
+
+        /* Input */
+
+        .input-group {
+            text-align: left;
+
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        .input-group input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            background-color: #f8fafc;
+
+            color: #172033;
+
+            transition: 0.3s;
+        }
+
+        .input-group input:hover {
+            border-color: #94a3b8;
+        }
+
+        .input-group input:focus {
+            border-color: #2563eb;
+
+            background-color: white;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 8px;
+        }
+
+        .buttons input {
+            width: 50%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        /* Login */
+
+        .login-btn {
+            background-color: #2563eb;
+        }
+
+        .login-btn:hover {
+            background-color: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+        /* Reset */
+
+        .reset-btn {
+            background-color: #64748b;
+        }
+
+        .reset-btn:hover {
+            background-color: #475569;
+
+            transform: translateY(-2px);
+        }
+
+        /* Register */
+
+        .register-text {
+            margin-top: 23px;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #6d28d9;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+
+        .footer {
+            margin-top: 25px;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+        }
+
+        /* Dark Theme */
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #020617, #1e293b);
+        }
+
+        body.dark-mode .login-box {
+            background-color: #1e293b;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.55);
+        }
+
+        body.dark-mode h1 {
+            color: #f8fafc;
+        }
+
+        body.dark-mode .subtitle {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .input-group label {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .input-group input {
+            background-color: #0f172a;
+
+            color: white;
+
+            border-color: #475569;
+        }
+
+        body.dark-mode .input-group input:focus {
+            border-color: #60a5fa;
+
+            background-color: #0f172a;
+        }
+
+        body.dark-mode .input-group input::placeholder {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .register-text {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .register-text a {
+            color: #c4b5fd;
+        }
+
+        body.dark-mode .footer {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .logo {
+            background-color: #1e3a8a;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Theme Buttons -->
+
+    <div class="theme">
+
+        <button class="light" onclick="lightTheme()">
+            ☀ Light
+        </button>
+
+        <button class="dark" onclick="darkTheme()">
+            🌙 Dark
+        </button>
+
+    </div>
+
+
+    <!-- Login Box -->
+
+    <div class="login-box">
+
+
+        <!-- Logo -->
+
+        <div class="logo">
+            👥
+        </div>
+
+
+        <!-- Heading -->
+
+        <h1>
+            Employee Management System
+        </h1>
+
+        <p class="subtitle">
+            Login to manage your employees
+        </p>
+
+
+        <!-- Login Form -->
+
+        <form id="loginform" action="/login" method="post">
+
+
+            <div class="input-group">
+
+                <label>
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Login and Reset -->
+
+            <div class="buttons">
+
+                <input
+                    type="submit"
+                    value="Login"
+                    class="login-btn"
+                >
+
+                <input
+                    type="reset"
+                    value="Reset"
+                    class="reset-btn"
+                >
+
+            </div>
+
+
+        </form>
+
+
+        <!-- Register -->
+
+        <p class="register-text">
+
+            Don't have an account?
+
+            <a href="/register">
+                Register here
+            </a>
+
+        </p>
+
+
+        <!-- Footer -->
+
+        <div class="footer">
+            Employee Management System
+        </div>
+
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function lightTheme() {
+
+            document.body.classList.remove("dark-mode");
+
+            document.cookie = "theme=light; path=/";
+
+        }
+
+
+        function darkTheme() {
+
+            document.body.classList.add("dark-mode");
+
+            document.cookie = "theme=dark; path=/";
+
+        }
+
+
+        // Read theme from cookie
+
+        let cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+
+            let parts = cookie.trim().split("=");
+
+            if (
+                parts[0] == "theme"
+                &&
+                parts[1] == "dark"
+            ) {
+
+                document.body.classList.add("dark-mode");
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

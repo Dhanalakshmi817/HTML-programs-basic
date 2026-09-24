@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            min-height: 100vh;
+            transition: 0.3s;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background-color: #172033;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.25);
+        }
+
+        /* Logo */
+
+        .logo {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Navigation links */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 12px;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 9px 12px;
+            border-radius: 7px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+
+        /* Logout Button */
+
+        .logout-btn {
+            border: 1px solid #dc2626;
+            padding: 8px 15px !important;
+            border-radius: 7px;
+            color: #fecaca !important;
+        }
+
+        .logout-btn:hover {
+            background-color: #dc2626;
+            color: white !important;
+        }
+
+        /* Content */
+
+        .content {
+            padding: 70px 30px;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: #172033;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            color: #475569;
+            font-size: 18px;
+        }
+
+        /* Username */
+
+        .username {
+            color: #1d4ed8;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Success Message */
+
+        .success {
+            color: #334155;
+            font-size: 20px;
+        }
+
+        /* Theme Buttons */
+
+        .theme-toggle {
+            display: flex;
+            gap: 5px;
+        }
+
+        .theme-toggle a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 7px 9px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .theme-toggle a:hover {
+            background-color: #334155;
+            color: white;
+        }
+
+        /* Dark Theme */
+
+        /* Dark Theme */
+
+        body.dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark .navbar {
+            background-color: #020617;
+        }
+
+        body.dark .content h1 {
+            color: #f8fafc;
+        }
+
+        body.dark .content p {
+            color: #cbd5e1;
+        }
+
+        body.dark .success {
+            color: #cbd5e1;
+        }
+
+        body.dark .username {
+            color: #60a5fa;
+        }
+
+        body.dark .nav-links a {
+            color: #cbd5e1;
+        }
+
+        body.dark .nav-links a:hover {
+            background-color: #1e293b;
+            color: #ffffff;
+        }
+
+        body.dark .theme-toggle a {
+            color: #cbd5e1;
+        }
+
+        body.dark .theme-toggle a:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+
+        body.dark .logout-btn {
+            color: #fecaca !important;
+        }
+    </style>
+
+</head>
+
+
+<body class="{{ theme }}">
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+
+            Employee Management System
+
+        </div>
+
+
+        <ul class="nav-links">
+
+
+            <!-- Home -->
+
+            <li>
+
+                <a href="/home">
+                    Home
+                </a>
+
+            </li>
+
+            <li>
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+            </li>
+
+            <!-- Employees -->
+
+            <li>
+
+                <a href="/employees">
+                    Employees
+                </a>
+
+            </li>
+
+
+            <!-- Add Employee -->
+
+            <li>
+
+                <a href="/addemployee">
+                    Add Employee
+                </a>
+
+            </li>
+
+
+            <!-- Search -->
+
+            <li>
+
+                <a href="/search">
+                    Search
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+
+            <li>
+
+                <a href="/logout" class="logout-btn">
+                    Logout
+                </a>
+
+            </li>
+
+
+            <!-- Theme -->
+
+            <li>
+
+                <div class="theme-toggle">
+
+                    <a href="#" onclick="lightTheme()">
+                        ☀ Light
+                    </a>
+
+
+                    <a href="#" onclick="darkTheme()">
+                        🌙 Dark
+                    </a>
+
+                </div>
+
+            </li>
+
+
+        </ul>
+
+    </nav>
+
+
+    <!-------------------- HOME CONTENT ---------------------------->
+
+
+    <div class="content">
+
+
+        <div class="username">
+
+            Welcome, {{ username }}!
+
+        </div>
+
+
+        <p class="success">
+
+            You are successfully logged in.
+
+        </p>
+
+
+    </div>
+
+
+    <script>
+        
+    async function changeTheme(theme) {
+
+        if (theme == "dark") {
+            document.body.classList.add("dark");
+        } else {
+            document.body.classList.remove("dark");
+        }
+
+        document.cookie = "theme=" + theme + "; path=/";
+
+        try {
+
+            let response = await fetch("/save-theme", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    theme: theme
+                })
+            });
+
+            let result = await response.text();
+
+            console.log(result);
+
+        } catch (error) {
+
+            console.log("Theme save error:", error);
+
+        }
+    }
+
+
+    function lightTheme() {
+        changeTheme("light");
+    }
+
+
+    function darkTheme() {
+        changeTheme("dark");
+    }
+
+
+    let savedTheme = "{{ theme }}";
+
+    if (savedTheme == "dark") {
+        document.body.classList.add("dark");
+    }
+
+</script>
+
+    </script>
+
+
+</body>
+
+</html>

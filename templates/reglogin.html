@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Employee Management System - Register</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(135deg, #f1f5f9, #dbe4ee);
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: 0.3s;
+        }
+
+
+        /* Register Box */
+
+        .register-box {
+            width: 430px;
+
+            background-color: #ffffff;
+
+            padding: 40px;
+
+            border-radius: 16px;
+
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.20);
+
+            transition: 0.3s;
+        }
+
+
+        /* Heading */
+
+        h2 {
+            text-align: center;
+
+            color: #172033;
+
+            font-size: 26px;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* Input Group */
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+
+        /* Labels */
+
+        label {
+            display: block;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+
+        /* Input Fields */
+
+        input[type="text"],
+        input[type="password"] {
+
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #94a3b8;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            background-color: #f8fafc;
+
+            color: #172033;
+        }
+
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+
+            border-color: #1d4ed8;
+
+            background-color: white;
+
+            box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+        }
+
+
+        /* Error */
+
+        .error {
+
+            color: #dc2626;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-top: 5px;
+
+            margin-bottom: 16px;
+
+            text-align: center;
+        }
+
+
+        /* Buttons */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 8px;
+        }
+
+
+        .buttons input {
+
+            width: 50%;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* Register Button */
+
+        input[type="submit"] {
+
+            background-color: #6d28d9;
+        }
+
+        input[type="submit"]:hover {
+
+            background-color: #5b21b6;
+        }
+
+
+        /* Reset Button */
+
+        input[type="reset"] {
+
+            background-color: #475569;
+        }
+
+        input[type="reset"]:hover {
+
+            background-color: #334155;
+        }
+
+
+        /* Dark Theme */
+
+        body.dark-mode {
+
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+
+        body.dark-mode .register-box {
+
+            background-color: #1e293b;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+        }
+
+
+        body.dark-mode h2 {
+
+            color: #f8fafc;
+        }
+
+
+        body.dark-mode label {
+
+            color: #e2e8f0;
+        }
+
+
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="password"] {
+
+            background-color: #0f172a;
+
+            color: white;
+
+            border-color: #475569;
+        }
+
+
+        body.dark-mode input[type="text"]:focus,
+        body.dark-mode input[type="password"]:focus {
+
+            border-color: #60a5fa;
+
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+        }
+
+
+        body.dark-mode input::placeholder {
+
+            color: #94a3b8;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="register-box">
+
+
+        <h2>
+            Registration Form
+        </h2>
+
+
+        <form
+            id="registrationform"
+            action="/register"
+            method="post">
+
+
+            <!-- Full Name -->
+
+            <div class="input-group">
+
+                <label>
+                    Full name:
+                </label>
+
+                <input
+                    type="text"
+                    id="fullname"
+                    name="fullname"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Username -->
+
+            <div class="input-group">
+
+                <label>
+                    User name:
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label>
+                    Password:
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Error Message -->
+
+            {% if error %}
+
+            <p class="error">
+                {{ error }}
+            </p>
+
+            {% endif %}
+
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <input
+                    type="submit"
+                    value="Register"
+                >
+
+                <input
+                    type="reset"
+                    value="Reset"
+                >
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        // Read theme from cookie
+
+        let cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+
+            let parts = cookie.trim().split("=");
+
+            if (parts[0] == "theme" && parts[1] == "dark") {
+
+                document.body.classList.add("dark-mode");
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

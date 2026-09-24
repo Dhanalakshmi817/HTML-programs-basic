@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Employee Details</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #172033;
+        }
+
+        .container {
+            width: 450px;
+            margin: 60px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .detail {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .detail strong {
+            display: inline-block;
+            width: 110px;
+        }
+
+        .back-btn {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #1d4ed8;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .back-btn:hover {
+            background-color: #1e40af;
+        }
+
+        /* Dark Theme */
+
+        body.dark {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        body.dark .container {
+            background-color: #1e293b;
+        }
+
+        body.dark .detail {
+            border-color: #475569;
+        }
+    </style>
+
+</head>
+
+<body class="{{ theme }}">
+
+    <div class="container">
+
+        <h1>Employee Details</h1>
+
+        <div class="detail">
+            <strong>ID:</strong>
+            {{ employee[0] }}
+        </div>
+
+        <div class="detail">
+            <strong>Name:</strong>
+            {{ employee[1] }}
+        </div>
+
+        <div class="detail">
+            <strong>Email:</strong>
+            {{ employee[2] }}
+        </div>
+
+        <div class="detail">
+            <strong>Department:</strong>
+            {{ employee[3] }}
+        </div>
+
+        <div class="detail">
+            <strong>Phone:</strong>
+            {{ employee[4] }}
+        </div>
+
+        <a href="/employees" class="back-btn">
+            Back to Employees
+        </a>
+
+    </div>
+
+</body>
+
+</html>

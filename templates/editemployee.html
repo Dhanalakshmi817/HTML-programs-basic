@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Employee</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #172033;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 400px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #334155;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #94a3b8;
+            border-radius: 5px;
+            background-color: #f8fafc;
+            color: #172033;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #1d4ed8;
+            outline: none;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1e40af;
+        }
+
+        /* Dark theme */
+
+        body.dark {
+            background-color: #f1f5f9;
+            color: #172033;
+        }
+
+        body.dark h1 {
+            color: #172033;
+        }
+
+        body.dark form {
+            background-color: #ffffff;
+        }
+
+        body.dark label {
+            color: #334155;
+        }
+
+        body.dark input,
+        body.dark select {
+            background-color: #f8fafc;
+            color: #172033;
+            border-color: #94a3b8;
+        }
+
+        body.dark button {
+            background-color: #1d4ed8;
+        }
+
+        body.dark button:hover {
+            background-color: #1e40af;
+        }
+
+        body.dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark h1 {
+            color: #f8fafc;
+        }
+
+        body.dark form {
+            background-color: #1e293b;
+        }
+
+        body.dark label {
+            color: #e2e8f0;
+        }
+
+        body.dark input,
+        body.dark select {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-color: #475569;
+        }
+
+        body.dark input:focus,
+        body.dark select:focus {
+            border-color: #60a5fa;
+        }
+    </style>
+
+</head>
+
+<body class="{{ theme }}">
+
+    <h1>Edit Employee</h1>
+
+    <form action="/edit/{{ employee[0] }}" method="post">
+
+        <label>Full Name</label>
+
+        <input type="text" name="fullname" value="{{ employee[1] }}" required>
+
+        <label>Email</label>
+
+        <input type="email" name="email" value="{{ employee[2] }}" required>
+
+        <label>Department</label>
+
+        <select name="department" required>
+
+            <option value="IT" {% if employee[3]=="IT" %}selected{% endif %}>
+                IT
+            </option>
+
+            <option value="HR" {% if employee[3]=="HR" %}selected{% endif %}>
+                HR
+            </option>
+
+            <option value="Finance" {% if employee[3]=="Finance" %}selected{% endif %}>
+                Finance
+            </option>
+
+            <option value="Marketing" {% if employee[3]=="Marketing" %}selected{% endif %}>
+                Marketing
+            </option>
+
+        </select>
+
+        <label>Phone</label>
+
+        <input type="text" name="phone" value="{{ employee[4] }}" required>
+
+        <button type="submit">Update Employee</button>
+
+    </form>
+
+    <script>
+
+        let cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+
+            let parts = cookie.trim().split("=");
+
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #172033;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* Employee form */
+
+        form {
+            background-color: #ffffff;
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+        }
+
+        label {
+            color: #334155;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #94a3b8;
+            border-radius: 5px;
+            background-color: #f8fafc;
+            color: #172033;
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #1d4ed8;
+            outline: none;
+        }
+
+        /* Add button */
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1e40af;
+        }
+
+        /* Dark theme */
+
+        body.dark {
+            background-color: #f1f5f9;
+            color: #172033;
+        }
+
+        body.dark h1 {
+            color: #172033;
+        }
+
+        body.dark form {
+            background-color: #ffffff;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+        }
+
+        body.dark label {
+            color: #334155;
+        }
+
+        body.dark input,
+        body.dark select {
+            background-color: #f8fafc;
+            color: #172033;
+            border-color: #94a3b8;
+        }
+
+        body.dark input::placeholder {
+            color: #64748b;
+        }
+
+        body.dark button {
+            background-color: #1d4ed8;
+        }
+
+        body.dark button:hover {
+            background-color: #1e40af;
+        }
+
+        body.dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark h1 {
+            color: #f8fafc;
+        }
+
+        body.dark form {
+            background-color: #1e293b;
+        }
+
+        body.dark label {
+            color: #e2e8f0;
+        }
+
+        body.dark input,
+        body.dark select {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-color: #475569;
+        }
+
+        body.dark input:focus,
+        body.dark select:focus {
+            border-color: #60a5fa;
+        }
+    </style>
+</head>
+
+<body class="{{ theme }}">
+
+    <h1>Add Employee</h1>
+
+    <form action="/addemployee" method="post">
+
+        <label>Name:</label>
+        <input type="text" name="fullname" placeholder="Enter employee name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Enter employee email" required>
+
+        <label>Department:</label>
+
+        <select name="department" required>
+            <option value="">Select Department</option>
+            <option value="IT">IT</option>
+            <option value="HR">HR</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+
+        <label>Phone:</label>
+        <input type="text" name="phone" placeholder="Enter phone number" required>
+
+        <button type="submit">Add Employee</button>
+
+    </form>
+
+    <script>
+
+        let cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+
+            let parts = cookie.trim().split("=");
+
+            if (parts[0] == "theme" && parts[1] == "dark") {
+                document.body.classList.add("dark");
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
